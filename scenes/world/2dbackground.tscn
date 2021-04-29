@@ -1,0 +1,124 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/world/TextureRect.gd" type="Script" id=1]
+[ext_resource path="res://assets/2D/catkrenlife.png" type="Texture" id=2]
+[ext_resource path="res://assets/2D/spacebackground.JPG" type="Texture" id=3]
+[ext_resource path="res://scenes/world/2dbackground.gd" type="Script" id=4]
+[ext_resource path="res://assets/2D/distance.png" type="Texture" id=5]
+[ext_resource path="res://assets/audio/music.ogg" type="AudioStream" id=6]
+
+[node name="main" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="2dbackground" type="TextureRect" parent="."]
+margin_left = -2.0
+margin_top = -1.0
+margin_right = 1022.0
+margin_bottom = 599.0
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vpbackground" type="TextureRect" parent="."]
+margin_left = 8.07947
+margin_top = -0.519836
+margin_right = 1032.08
+margin_bottom = 599.48
+expand = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text" type="GridContainer" parent="vpbackground"]
+margin_left = 121.5
+margin_top = 3.0
+margin_right = 161.5
+margin_bottom = 43.0
+rect_scale = Vector2( 0.1, 0.1 )
+columns = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="0" type="TextureRect" parent="vpbackground/text"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="1" type="TextureRect" parent="vpbackground/text"]
+margin_left = 4.0
+margin_right = 4.0
+
+[node name="2" type="TextureRect" parent="vpbackground/text"]
+margin_left = 8.0
+margin_right = 8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="3" type="TextureRect" parent="vpbackground/text"]
+margin_left = 12.0
+margin_right = 12.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="4" type="TextureRect" parent="vpbackground/text"]
+margin_left = 16.0
+margin_right = 16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="distancelabel" type="TextureRect" parent="vpbackground"]
+margin_left = 1.2818
+margin_top = 1.31741
+margin_right = 1051.28
+margin_bottom = 625.317
+rect_scale = Vector2( 0.098022, 0.0978736 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="catkrenlabel" type="TextureRect" parent="vpbackground"]
+margin_left = 639.199
+margin_top = 5.35142
+margin_right = 1827.2
+margin_bottom = 776.351
+rect_scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 2 )
+
+[node name="catkrencounter" type="GridContainer" parent="vpbackground"]
+margin_left = 775.715
+margin_top = 8.52623
+margin_right = 815.715
+margin_bottom = 48.5262
+rect_scale = Vector2( 0.1, 0.1 )
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="0" type="TextureRect" parent="vpbackground/catkrencounter"]
+
+[node name="1" type="TextureRect" parent="vpbackground/catkrencounter"]
+margin_left = 4.0
+margin_right = 4.0
+
+[node name="2" type="TextureRect" parent="vpbackground/catkrencounter"]
+margin_left = 8.0
+margin_right = 8.0
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 1024, 600 )
+transparent_bg = true
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true

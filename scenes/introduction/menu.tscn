@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/2D/menu.JPG" type="Texture" id=1]
+[ext_resource path="res://scenes/introduction/menu.gd" type="Script" id=2]
+[ext_resource path="res://assets/2D/pawn.png" type="Texture" id=3]
+
+[sub_resource type="Theme" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 474.362, 154.126 )
+rotation = 1.57074
+scale = Vector2( 0.321522, 0.580921 )
+texture = ExtResource( 1 )
+flip_h = true
+
+[node name="Button" type="Button" parent="."]
+visible = false
+margin_left = 235.0
+margin_top = 233.0
+margin_right = 710.0
+margin_bottom = 443.0
+theme = SubResource( 1 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="pawn" type="Sprite" parent="."]
+position = Vector2( -122.861, -338.617 )
+rotation = -0.652136
+scale = Vector2( 0.530362, 0.449657 )
+texture = ExtResource( 3 )
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

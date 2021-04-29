@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/2D/captain.png" type="Texture" id=1]
+[ext_resource path="res://scenes/introduction/introduction.gd" type="Script" id=2]
+[ext_resource path="res://assets/2D/dialog01.png" type="Texture" id=3]
+[ext_resource path="res://assets/2D/dialog02.png" type="Texture" id=4]
+[ext_resource path="res://assets/2D/dialog03.png" type="Texture" id=5]
+
+[node name="introduction" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="dialog3" type="Sprite" parent="."]
+position = Vector2( 651.513, 173.706 )
+scale = Vector2( 0.228136, 0.17084 )
+texture = ExtResource( 5 )
+flip_v = true
+
+[node name="dialog2" type="Sprite" parent="."]
+position = Vector2( 655.536, 166.671 )
+scale = Vector2( 0.247258, 0.174655 )
+texture = ExtResource( 4 )
+flip_v = true
+
+[node name="dialog1" type="Sprite" parent="."]
+position = Vector2( 655.51, 229.599 )
+scale = Vector2( 0.214136, 0.20831 )
+texture = ExtResource( 3 )
+flip_v = true
+
+[node name="captain" type="Sprite" parent="."]
+position = Vector2( 169.46, 393.759 )
+scale = Vector2( 0.226106, 0.240767 )
+texture = ExtResource( 1 )
+flip_v = true

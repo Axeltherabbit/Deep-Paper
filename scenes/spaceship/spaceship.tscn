@@ -1,0 +1,105 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://scenes/world/KinematicBody.gd" type="Script" id=1]
+[ext_resource path="res://assets/2D/spaceship01.png" type="Texture" id=2]
+[ext_resource path="res://assets/2D/spaceship04.png" type="Texture" id=3]
+[ext_resource path="res://assets/2D/spaceship05.png" type="Texture" id=4]
+[ext_resource path="res://assets/2D/spaceship06.png" type="Texture" id=5]
+[ext_resource path="res://assets/2D/spaceship03.png" type="Texture" id=6]
+[ext_resource path="res://assets/audio/open_paper1.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/2D/spaceship02.png" type="Texture" id=8]
+[ext_resource path="res://assets/2D/enginefire2.png" type="Texture" id=9]
+[ext_resource path="res://assets/2D/enginefire1.png" type="Texture" id=10]
+[ext_resource path="res://assets/audio/laser.ogg" type="AudioStream" id=11]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.473463, 0.477234, 0.212909 )
+
+[sub_resource type="QuadMesh" id=2]
+
+[sub_resource type="AnimatedTexture" id=3]
+flags = 7
+frames = 6
+oneshot = true
+fps = 1.3
+frame_0/texture = ExtResource( 2 )
+frame_1/texture = ExtResource( 8 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 6 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 3 )
+frame_3/delay_sec = 0.0
+frame_4/texture = ExtResource( 4 )
+frame_4/delay_sec = 0.0
+frame_5/texture = ExtResource( 5 )
+frame_5/delay_sec = 0.0
+
+[sub_resource type="SpatialMaterial" id=4]
+flags_transparent = true
+params_billboard_mode = 1
+albedo_texture = SubResource( 3 )
+
+[sub_resource type="QuadMesh" id=5]
+
+[sub_resource type="SpatialMaterial" id=6]
+params_billboard_mode = 1
+params_billboard_keep_scale = true
+params_use_alpha_scissor = true
+params_alpha_scissor_threshold = 1.0
+albedo_texture = ExtResource( 10 )
+
+[sub_resource type="SpatialMaterial" id=7]
+params_billboard_keep_scale = true
+params_use_alpha_scissor = true
+params_alpha_scissor_threshold = 0.98
+albedo_texture = ExtResource( 9 )
+
+[sub_resource type="QuadMesh" id=8]
+
+[node name="spaceship" type="KinematicBody"]
+collision_layer = 5
+collision_mask = 5
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+material/0 = SubResource( 4 )
+
+[node name="initaudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.99309 )
+current = true
+far = 8192.0
+
+[node name="leftengine" type="MeshInstance" parent="."]
+transform = Transform( 0.24812, 0, 0, 0, 0.240892, 0, 0, 0, 0.980615, -0.344976, 0.102961, 0.0374076 )
+visible = false
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
+
+[node name="rightengine" type="MeshInstance" parent="."]
+transform = Transform( 0.212528, 0, 0, 0, 0.299555, 0, 0, 0, 1, 0.357957, 0.138671, 0.00437218 )
+visible = false
+material_override = SubResource( 7 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="bulletspawn" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.00246 )
+
+[node name="laseraudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -0.961
+pitch_scale = 0.18
+
+[node name="cooldown" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="finished" from="laseraudio" to="." method="_on_laseraudio_finished"]
+[connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]

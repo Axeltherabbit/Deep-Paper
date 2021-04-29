@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.176471, 0.160784, 0.160784, 1 )
+
+[node name="tunnel" type="CSGBox"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
+use_collision = true
+material = SubResource( 1 )
+
+[node name="CSGCylinder" type="CSGCylinder" parent="."]
+transform = Transform( 0.846756, 0, 0, 0, -3.59636e-08, -0.82275, 0, 2.39756, -1.04801e-07, 0.0174403, 0.0345086, 0.00405216 )
+operation = 2
+material = SubResource( 2 )

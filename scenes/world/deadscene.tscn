@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/2D/deadscene.png" type="Texture" id=1]
+[ext_resource path="res://scenes/world/deadscene.gd" type="Script" id=2]
+[ext_resource path="res://assets/audio/explosion.ogg" type="AudioStream" id=3]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 480.44, 321.086 )
+scale = Vector2( 0.387605, 0.329542 )
+texture = ExtResource( 1 )
+flip_v = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]
